@@ -76,7 +76,7 @@ function deleteAccountByUsername(username){
   //用username搵返條data然後del.
 }
 
-app.post('/login',async (req, res) => {         //login按钮
+app.post('/login',async (req, res) => {        
   const username = req.body.username;
   const password = req.body.password;
   console.log("dashboard Page")
@@ -140,7 +140,7 @@ app.post('/edit/:username',isLogin, async (req, res) => {
   const username = req.params.username;
   const password = req.params.password;
   const email = req.params.email;
-  //然後用可以edit嘅只有password 同email，用username嚟搵。username係primary key.
+  //能被edit的column只有password 同email 。 用username嚟搵。username係primary key.
 
   res.redirect('/dashboard');
   console.log('edit ',username);
