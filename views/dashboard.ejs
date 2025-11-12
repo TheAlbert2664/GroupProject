@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome, <%= username %>!</h1>
+    <div class="actions">
+      <a href="/create"><button>Create Account</button></a>
+      <a href="/search"><button>Search Accounts</button></a>
+      <a href="/logout"><button>Logout</button></a>
+    </div>
+
+    <h2>All Accounts</h2>
+    <table>
+      <tr><th>Username</th><th>Email</th><th>Actions</th></tr>
+      <% accounts.forEach(acc => { %>
+        <tr>
+          <td><%= acc.username %></td>
+          <td><%= acc.email %></td>
+          <td>
+            <a href="/edit/<%= acc.username %>"><button>Edit</button></a>
+            <form method="POST" action="/delete/<%= acc.username %>" style="display:inline;">
+              <button type="submit" onclick="return confirm('Delete?')">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Account</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Edit Account: <%= account.username %></h1>
+    <form method="POST" action="/edit/<%= account.username %>">
+      <input type="text" name="username" value="<%= account.username %>" required><br>
+      <input type="text" name="password" value="<%= account.password %>" required><br>
+      <input type="email" name="email" value="<%= account.email %>" required><br>
+      <button type="submit">Update Account</button>
+    </form>
+    <p><a href="/dashboard">← Back to Dashboard</a></p>
+  </div>
+</body>
+</html>

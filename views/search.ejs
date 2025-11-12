@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Accounts</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Search Accounts</h1>
+    <form method="GET" action="/search">
+      <input type="text" name="username" placeholder="Username (partial)" ><br>
+      <input type="email" name="email" placeholder="Email (partial)" ><br>
+      <button type="submit">Search</button>
+    </form>
+
+    <h2>Results</h2>
+    <% if (accounts.length === 0) { %>
+      <p>No accounts found.</p>
+    <% } else { %>
+      <table>
+        <tr><th>Username</th><th>Email</th><th>Actions</th></tr>
+        <% accounts.forEach(acc => { %>
+          <tr>
+            <td><%= acc.username %></td>
+            <td><%= acc.email %></td>
+            <td>
+              <a href="/edit/<%= acc.username %>"><button>Edit</button></a>
+              <form method="POST" action="/delete/<%= acc.username %>" style="display:inline;">
+                <button type="submit" onclick="return confirm('Delete?')">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+    <% } %>
+    <p><a href="/dashboard">← Back to Dashboard</a></p>
+  </div>
+</body>
+</html>
